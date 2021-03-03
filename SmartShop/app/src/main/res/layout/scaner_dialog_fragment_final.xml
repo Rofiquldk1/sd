@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+
+    <ImageView
+        android:id="@+id/imgV_productImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/shoe" />
+
+    <TextView
+        android:id="@+id/tv_productName"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/imgV_productImage"
+        android:maxLines="2"
+        android:text="Converse High Ankie white Sneakers"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_productPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_productName"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/imgV_productImage"
+        android:text="300.00"
+        android:fontFamily="serif"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#F44336"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/btn_quantityDecrease"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/tv_productPrice"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/imgV_productImage"
+        android:background="@drawable/decr_btn_shape"
+        android:backgroundTint="@color/lightgray"
+        android:src="@drawable/ic_minus" />
+
+    <TextView
+        android:id="@+id/tv_productQuantity"
+        android:layout_width="45dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/tv_productPrice"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/btn_quantityDecrease"
+        android:background="@drawable/product_qty_shape"
+        android:backgroundTint="#01B3CA"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="1"
+        android:typeface="serif"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/btn_quantityIncrease"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/tv_productPrice"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/tv_productQuantity"
+        android:background="@drawable/incr_btn_shape"
+        android:backgroundTint="@color/lightgray"
+        android:src="@drawable/ic_add" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imgV_productImage"
+        android:id="@+id/l1"
+        android:layout_below="@id/btn_quantityDecrease"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        >
+        <TextView
+            android:id="@+id/discountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discount : "
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtTxt_singleProductDiscount"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:maxLines="1"
+            android:inputType="number"
+            android:paddingTop="5dp" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l1"
+        android:layout_alignBaseline="@+id/tv_productTotalPrice"
+        android:layout_toLeftOf="@+id/tv_productTotalPrice"
+        android:text="Total Price : "
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_productTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l1"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="70000.00"
+        android:fontFamily="serif"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#4CAF50"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/l2"
+        android:layout_below="@id/tv_productTotalPrice"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/btn_AddProductViewDialog"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#2BCA31"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:id="@+id/btn_dismissProductViewDialog"
+            android:text="Discard"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#F44336"
+            android:layout_alignParentLeft="true"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue scanning?"
+            android:backgroundTint="#009688"
+            android:layout_below="@+id/btn_dismissProductViewDialog"
+            android:id="@+id/checkbox_continueScanning"
+            android:layout_alignParentLeft="true"
+            android:checked="true"
+            android:layout_marginTop="10dp"
+            />
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

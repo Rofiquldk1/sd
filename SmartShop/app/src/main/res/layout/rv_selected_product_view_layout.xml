@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5dp"
+    android:padding="5dp"
+    android:layout_margin="5dp"
+    tools:targetApi="lollipop">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    >
+    <ImageView
+        android:id="@+id/imgV_rvProductView_productImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/shoe" />
+
+    <TextView
+        android:id="@+id/tv_rvProductView_productName"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/imgV_rvProductView_productImage"
+        android:maxLines="2"
+        android:text="Converse High Ankie white Sneakers"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/imgBtn_rvProductView_productDelete"
+        android:src="@drawable/ic_delete"
+        android:background="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        />
+
+    <TextView
+        android:id="@+id/tv_rvProductView_productPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgV_rvProductView_productImage"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="serif"
+        android:text="3000.00"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#F44336"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/btn_rvProductView_quantityDecrease"
+        android:layout_width="35dp"
+        android:layout_height="22dp"
+        android:layout_below="@+id/imgV_rvProductView_productImage"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/imgV_rvProductView_productImage"
+        android:background="@drawable/decr_btn_shape"
+        android:backgroundTint="@color/lightgray"
+        android:src="@drawable/ic_minus" />
+
+    <TextView
+        android:id="@+id/tv_rvProductView_productQuantity"
+        android:layout_width="45dp"
+        android:layout_height="22dp"
+        android:layout_below="@+id/imgV_rvProductView_productImage"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/btn_rvProductView_quantityDecrease"
+        android:background="@drawable/product_qty_shape"
+        android:backgroundTint="#01B3CA"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="1"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
+    <ImageButton
+        android:id="@+id/btn_rvProductView_quantityIncrease"
+        android:layout_width="35dp"
+        android:layout_height="22dp"
+        android:layout_below="@+id/imgV_rvProductView_productImage"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/tv_rvProductView_productQuantity"
+        android:background="@drawable/incr_btn_shape"
+        android:backgroundTint="@color/lightgray"
+        android:src="@drawable/ic_add" />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_rvProductView_productTotalPrice"
+        android:layout_toLeftOf="@+id/tv_rvProductView_productTotalPrice"
+        android:text="Total : "
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_rvProductView_productTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_rvProductView_quantityDecrease"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="25dp"
+        android:fontFamily="serif"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="70000.00"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#4CAF50"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        />
+
+</RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
+
+
+    <!--    android:id="@+id/tv_rvProductView_productName"
+        android:id="@+id/tv_rvProductView_productQuantity"
+        android:id="@+id/tv_rvProductView_productTotalPrice"-->
+
+
+

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "943853513823",
+    "project_id": "smartshop-ccd7e",
+    "storage_bucket": "smartshop-ccd7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943853513823:android:f4d5a91210792b59aa7fea",
+        "android_client_info": {
+          "package_name": "com.agamilabs.smartshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943853513823-5f7nnhicaf93liqnb4ioievatn7e57qc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARq3MCSMEybyxfql2CP6vPhOKa71nCm6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943853513823-5f7nnhicaf93liqnb4ioievatn7e57qc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

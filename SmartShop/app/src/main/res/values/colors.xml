@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">@color/purple_500</color>
+    <color name="colorPrimaryDark">@color/purple_700</color>
+    <color name="colorAccent">@color/teal_200</color>
+
+
+    <color name="actionbar_opacity">#33000000</color>
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="primary_light">#C5CAE9</color>
+    <color name="accent">#E040FB</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="lightgray">#DFE3E2</color>
+    <color name="darkblue">#001FCD</color>
+    <color name="holoblue">#97B3EA</color>
+
+
+
+
+    <!--    color outdoor-->
+    <color name="colorSecondary">#880e4f</color>
+    <color name="colorSecondaryLight">#bc477b</color>
+    <color name="colorSecondaryDark">#560027</color>
+
+    <color name="toolbar_themed">#22704e77</color>
+    <color name="toolbar_background">@color/white</color>
+    <color name="toolbar_title_text_color">@color/colorPrimary</color>
+
+    <color name="deafult_color">@color/colorPrimary</color>
+    <color name="highlight_color">#008000</color>
+
+
+
+    <color name="pie_chart_center_txt_color">#4E2A9F</color>
+    <color name="color1">#FB3D51</color>
+    <color name="color2">#005e9b</color>
+    <color name="color3">#9c27b0</color>
+    <color name="color4">#d81b60</color>
+    <color name="color5">#ff9800</color>
+    <color name="darkGray">#A9A9A9</color>
+
+    <array name="colors">
+        <item>#FB3D51</item>
+        <item>#005e9b</item>
+        <item>#9c27b0</item>
+        <item>#d81b60</item>
+        <item>#ff9800</item>
+    </array>
+
+</resources>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/white"
+    android:layout_marginBottom="2dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_rvInvoiceViewer_invoiceNo"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="2dp"
+                android:text="Invoice no"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/tv_rvInvoiceViewer_customerName"
+
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="@color/lightgray"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="2dp"
+                android:text="Customer"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_rvInvoiceViewer_date"
+
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:background="@color/white"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="2dp"
+                android:text="Date"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/tv_rvInvoiceViewer_dueDate"
+
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:background="@color/lightgray"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="2dp"
+                android:text="Duedate"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_rvInvoiceViewer_amount"
+
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:background="@color/white"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="2dp"
+                android:text="Amount"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_rvInvoiceViewer_discount"
+
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:background="@color/lightgray"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="2dp"
+                android:text="Discount"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_rvInvoiceViewer_paid"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:background="@color/white"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="2dp"
+                android:text="Paid"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_rvInvoiceViewer_status"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:background="@color/lightgray"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="2dp"
+                android:text="Status"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_rvInvoiceViewer_action"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:background="@color/white"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="2dp"
+                android:text="Action"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
+
+
+
+

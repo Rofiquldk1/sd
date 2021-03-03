@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_stock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView_stock_report"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:elevation="3dp"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:foregroundGravity="center"
+                    android:visibility="visible"
+                    app:cardUseCompatPadding="true"
+
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_product_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="product name..."
+                                    android:paddingLeft="10dp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/text_category"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="4dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/background"
+                                android:gravity="center"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:text="Category name"
+                                android:textAllCaps="false"
+                                android:textSize="16dp"
+
+
+                                />
+
+                            <Spinner
+                                android:id="@+id/spinner_reorder_point"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:entries="@array/reorder_point_array"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:textAlignment="center"
+                                android:background="@drawable/background"
+                                android:layout_marginLeft="4dp"
+                                android:scrollbars="none"
+
+
+                                />
+
+                            <!--            <Spinner-->
+                            <!--                android:id="@+id/btn_level_type"-->
+                            <!--                android:layout_width="match_parent"-->
+                            <!--                android:layout_height="wrap_content"-->
+                            <!--                android:padding="4dp"-->
+                            <!--                android:layout_marginLeft="4dp"-->
+                            <!--                android:layout_marginRight="4dp"-->
+
+                            <!--                android:layout_weight="1"-->
+                            <!--                android:text="Level Type"-->
+                            <!--                android:textAllCaps="false"-->
+
+                            <!--                />-->
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/linear_date_from"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginRight="4dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/background"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/text_date_from"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1"
+
+                                    android:gravity="center"
+                                    android:padding="5dp"
+                                    android:text="dd/mm/yyyy "
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+
+                                <ImageButton
+                                    android:id="@+id/imagebtn_date_from"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_date" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linear_date_to"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginRight="4dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/background"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/text_date_to"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+
+                                    android:padding="5dp"
+                                    android:text="--/--/----"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+
+                                <ImageButton
+                                    android:id="@+id/imagebtn_date_to"
+                                    android:layout_width="40dp"
+                                    android:layout_height="match_parent"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_date" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:gravity="right">
+
+                            <Button
+                                android:id="@+id/btn_filter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:padding="4dp"
+
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="filter"
+                                android:textAllCaps="false"
+
+                                />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_stock_report"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:scrollbarStyle="outsideInset"
+                    android:scrollbars="horizontal"
+
+                    android:layout_below="@+id/cardView_stock_report"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView_stock_report" />
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout  >
