@@ -12,15 +12,20 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -64,10 +69,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Queue;
 import java.util.concurrent.TimeUnit;
+
+import SeparatePk.IRemoteServiceCallback;
+import SeparatePk.aidlInterface;
 
 import static android.Manifest.permission.READ_CONTACTS;
 import static java.lang.Boolean.FALSE;
@@ -101,6 +111,11 @@ public class NewCampaignActivity extends AppCompatActivity implements View.OnCli
             Manifest.permission.SEND_SMS,
             Manifest.permission.READ_CONTACTS
     };
+    public aidlInterface aidlObject,aidlObject2,aidlObject3,aidlObject4,aidlObject5;
+    String[] name = {"client1", "client2", "client3", "client4", "client5"} ;
+    private int SmsID;
+    private String recipientNumbers,campaignMessage,campaignName;
+    private Queue<Integer> smsQueue = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +129,19 @@ public class NewCampaignActivity extends AppCompatActivity implements View.OnCli
         smsDatabaseHelper = new SmsDatabaseHelper(this);
         requestQueue = Volley.newRequestQueue(this);
         requestQueueDuplicate = Volley.newRequestQueue(this);
+
+        bindToAIDLService();
+        bindToAIDLService2();
+        bindToAIDLService3();
+        bindToAIDLService4();
+        bindToAIDLService5();
+
+        int count = smsDatabaseHelper.getClientExtistence() ;
+        if( count == 0 ){
+            for(int i=0; i<5; i++){
+                smsDatabaseHelper.insertClienInfo(name[i], "free") ;
+            }
+        }
 
         btn_expand.setOnClickListener(this);
         btn_save.setOnClickListener(this);
@@ -180,6 +208,7 @@ public class NewCampaignActivity extends AppCompatActivity implements View.OnCli
         SharedPreferences NotificationsPref = getSharedPreferences("switchStaus", 0);
         boolean notificationsStatusOn = NotificationsPref.getBoolean("notificationSwitch", true);
 
+
         // Set switch to value in shared preferences
         notificationsSwitch.setChecked(notificationsStatusOn);
         notificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -209,6 +238,54 @@ public class NewCampaignActivity extends AppCompatActivity implements View.OnCli
 
         checkAndRequestPermissions();
         loadDateTime();
+        setUpConnection();
+    }
+
+    private void setUpConnection() {
+        new Thread() {
+            public void run() {
+                try {
+                    Thread.sleep(10*1000);
+                } catch (InterruptedException e) {
+
+                }
+
+               /* try {
+                    aidlObject.SendSMS("","hi","[01521206095]");
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }*/
+                //new AlarmReceiver().setUpConnection(aidlObject,aidlObject2,aidlObject3,aidlObject4,aidlObject5);
+
+                try {
+                    aidlObject.trigger(stubObjectR);
+                    aidlObject2.trigger(stubObjectR);
+                    aidlObject3.trigger(stubObjectR);
+                    aidlObject4.trigger(stubObjectR);
+                    aidlObject5.trigger(stubObjectR);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
+        /*SharedPreferences TriggerPref = getSharedPreferences("triggerStatus", 0);
+        boolean triggerStatus = TriggerPref.getBoolean("triggerClients", false);
+
+        if(triggerStatus == false){
+            try {
+                aidlObject.trigger(stubObjectR);
+                aidlObject2.trigger(stubObjectR);
+                aidlObject3.trigger(stubObjectR);
+                aidlObject4.trigger(stubObjectR);
+                aidlObject5.trigger(stubObjectR);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            SharedPreferences.Editor editor = TriggerPref.edit();
+            editor.putBoolean("triggerClients", true);
+            editor.commit();
+        }*/
     }
 
     private void loadDateTime() {
@@ -797,10 +874,10 @@ public class NewCampaignActivity extends AppCompatActivity implements View.OnCli
         if(editText_extra_recipient.getText().toString().trim().length() >= 11){
             String extra_recipient = editText_extra_recipient.getText().toString().trim().substring(0,11);
             if(extra_recipient.substring(0,2).equalsIgnoreCase("01")){
-                /*if(!phoneNumList.contains(extra_recipient)){
+                if(!phoneNumList.contains(extra_recipient)){
                     phoneNumList.add(extra_recipient);
-                }*/
-                phoneNumList.add(extra_recipient);
+                }
+                //phoneNumList.add(extra_recipient);
             }else {
                 return;
             }
@@ -849,6 +926,205 @@ public class NewCampaignActivity extends AppCompatActivity implements View.OnCli
         CheckBox checkBox = (CheckBox)v;
         if(checkBox.isChecked()){
            isChecked="true";
+        }
+    }
+
+    //Connection
+    private void bindToAIDLService5() {
+        Intent aidlServiceIntent = new Intent("connect_to_aidl_service5");
+        bindService(implicitIntentToExplicitIntent(aidlServiceIntent,this),serviceConnectionObject5,BIND_AUTO_CREATE);
+    }
+
+    private void bindToAIDLService4() {
+        Intent aidlServiceIntent = new Intent("connect_to_aidl_service4");
+        bindService(implicitIntentToExplicitIntent(aidlServiceIntent,this),serviceConnectionObject4,BIND_AUTO_CREATE);
+    }
+
+    private void bindToAIDLService3() {
+        Intent aidlServiceIntent = new Intent("connect_to_aidl_service3");
+        bindService(implicitIntentToExplicitIntent(aidlServiceIntent,this),serviceConnectionObject3,BIND_AUTO_CREATE);
+    }
+
+    private void bindToAIDLService2() {
+        Intent aidlServiceIntent = new Intent("connect_to_aidl_service2");
+        bindService(implicitIntentToExplicitIntent(aidlServiceIntent,this),serviceConnectionObject2,BIND_AUTO_CREATE);
+    }
+
+    private void bindToAIDLService() {
+        Intent aidlServiceIntent = new Intent("connect_to_aidl_service");
+        bindService(implicitIntentToExplicitIntent(aidlServiceIntent,this),serviceConnectionObject,BIND_AUTO_CREATE);
+    }
+
+    ServiceConnection serviceConnectionObject = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            aidlObject = aidlInterface.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
+
+    ServiceConnection serviceConnectionObject2 = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            aidlObject2 = aidlInterface.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
+
+    ServiceConnection serviceConnectionObject3 = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            aidlObject3 = aidlInterface.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
+
+    ServiceConnection serviceConnectionObject4 = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            aidlObject4 = aidlInterface.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
+
+    ServiceConnection serviceConnectionObject5 = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            aidlObject5 = aidlInterface.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
+
+
+    public Intent implicitIntentToExplicitIntent(Intent implicitIntent, Context context) {
+        PackageManager pm = context.getPackageManager();
+        List<ResolveInfo> resolveInfoList = pm.queryIntentServices(implicitIntent, 0);
+
+        if (resolveInfoList == null || resolveInfoList.size() != 1) {
+            return null;
+        }
+        ResolveInfo serviceInfo = resolveInfoList.get(0);
+        ComponentName component = new ComponentName(serviceInfo.serviceInfo.packageName, serviceInfo.serviceInfo.name);
+        Intent explicitIntent = new Intent(implicitIntent);
+        explicitIntent.setComponent(component);
+        return explicitIntent;
+    }
+
+
+    IRemoteServiceCallback stubObjectR = new IRemoteServiceCallback.Stub() {
+
+        @Override
+        public void feedBack(String msg) throws RemoteException {
+            switch (msg){
+                case "freeClient1":
+                    smsDatabaseHelper.updateClientStatus(name[0],"free");
+                    break;
+                case "freeClient2":
+                    smsDatabaseHelper.updateClientStatus(name[1],"free");
+                    break;
+                case "freeClient3":
+                    //smsDatabaseHelper.updateClientStatus(name[2],"free");
+                    break;
+                case "freeClient4":
+                    smsDatabaseHelper.updateClientStatus(name[3],"free");
+                    break;
+                case "freeClient5":
+                    smsDatabaseHelper.updateClientStatus(name[4],"free");
+                    break;
+            }
+        }
+
+        @Override
+        public void sentStatus(String message) throws RemoteException {
+            //Log.d("260",message);
+            //Toast.makeText(MainActivity.this,message,Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    public void assignWorkToClients(int SmsId,String callFrom){
+        if(callFrom.equalsIgnoreCase("outside")){
+            smsQueue.add(SmsId);
+        }
+        int head = smsQueue.peek();
+        ArrayList<Sms> sms = smsDatabaseHelper.getSmsByID(head);
+        recipientNumbers = sms.get(0).recipientsNumber;
+        campaignMessage = sms.get(0).message;
+        campaignName = sms.get(0).campaignName;
+
+        if(smsDatabaseHelper.getClientStatus(name[0]).equalsIgnoreCase("free")){
+            try {
+                aidlObject.SendSMS(campaignName,campaignMessage,recipientNumbers);
+                smsDatabaseHelper.updateClientStatus(name[0],"busy");
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            smsQueue.remove();
+        } else if(smsDatabaseHelper.getClientStatus(name[1]).equalsIgnoreCase("free")){
+            try {
+                aidlObject2.SendSMS(campaignName,campaignMessage,recipientNumbers);
+                smsDatabaseHelper.updateClientStatus(name[1],"busy");
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            smsQueue.remove();
+        } else if(smsDatabaseHelper.getClientStatus(name[2]).equalsIgnoreCase("free")){
+            try {
+                aidlObject3.SendSMS(campaignName,campaignMessage,recipientNumbers);
+                //smsDatabaseHelper.updateClientStatus(name[2],"busy");
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            smsQueue.remove();
+        } else if(smsDatabaseHelper.getClientStatus(name[3]).equalsIgnoreCase("free")){
+            try {
+                aidlObject4.SendSMS(campaignName,campaignMessage,recipientNumbers);
+                smsDatabaseHelper.updateClientStatus(name[3],"busy");
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            smsQueue.remove();
+        } else if(smsDatabaseHelper.getClientStatus(name[4]).equalsIgnoreCase("free")){
+            try {
+                aidlObject5.SendSMS(campaignName,campaignMessage,recipientNumbers);
+                smsDatabaseHelper.updateClientStatus(name[4],"busy");
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            smsQueue.remove();
+        } else {
+            new Thread() {
+                public void run() {
+                    try {
+                        Thread.sleep(60*1000);
+                    } catch (InterruptedException e) {
+
+                    }
+
+                    while (smsQueue.size() > 0){
+                        assignWorkToClients(0,"inside");
+                    }
+                }
+            }.start();
         }
     }
 
